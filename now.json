@@ -1,0 +1,21 @@
+
+{
+	"version":2,
+	"env":{
+		"MONGO_URI_DEV":"mongodb+srv://prueba2:prueba2@cluster0-vp6hz.mongodb.net/myBlog?retryWrites=true&w=majority",
+		"SECRET_KEY":"fdPeiLXtT4FWfcwDqCSPWcecJaBB7M1eEitcQXEzVfWFMOq6pss",
+		"CLOUDINARY_NAME":"doaaht440",
+		"CLOUDINARY_API_KEY":"215755899985283",
+		"CLOUDINARY_API_KEY_SECRET":"pbRBEpOAwIrCA7EvNf-R4qK09V4"
+	},
+	"builds": [
+		{
+			"src":"app/index.js",
+			"use":"@now/node-server@canary"
+		}
+	],
+	"routes":[
+		{"src":"/.*","dest":"app/index.js"}
+	]
+
+}

@@ -1,0 +1,89 @@
+scalar Upload
+directive @auth on FIELD_DEFINITION | FIELD
+
+#Este es un comentario
+type Query{
+	listAuthors:[Author]! 
+	singleAuthor(id:ID!):Author!
+	listPosts:[Post]!
+	singlePost(id:ID!):Post!
+}
+
+type Mutation{
+	createAuthor(data:createAuthorInput!):Author!
+	login(email:String!,password:String):Auth! 
+	updateProfile(data:updateAuthorInput!):Author! @auth
+	deleteProfile:String! @auth
+	createPost(data:createPostAuthor!):Post! @auth
+	updatePost(id:ID!,data:updatePostAuthor!):Post! @auth
+	deletePost(id:ID):String! @auth
+}
+
+type Auth {
+	token:String!
+	message:String!
+}
+
+type Author{
+	_id:ID
+	first_name:String!
+	last_name:String!
+	password:String
+	email:String!
+	birth_date:String!
+	gender:GENDERS
+	profile_picture:String!
+	posts:[Post]!
+	is_active:Boolean!
+}
+
+type Post {
+	_id:ID
+	title:String!
+	content:String!
+	author:Author!
+	cover_photo:String!
+	likes:Int!
+	is_active:Boolean!
+}
+
+enum GENDERS {
+	H
+	M
+	O
+}
+
+input createAuthorInput {
+	first_name:String!
+	last_name:String!
+	email:String!
+	password:String!
+	birth_date:String
+	gender:GENDERS
+	profile_picture:String
+}
+
+input createPostAuthor {
+	title:String!
+	content:String!
+	cover_photo:Upload
+}
+
+
+input updateAuthorInput {
+	first_name:String
+	last_name:String
+	email:String
+	password:String
+	birth_date:String
+	gender:GENDERS
+	profile_picture:String
+}
+
+input updatePostAuthor {
+	title:String
+	content:String
+	cover_photo:String
+}
+
+

@@ -1,0 +1,26 @@
+{
+  "name": "backend_blog",
+  "version": "1.0.0",
+  "description": "Backend en  graphql",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app/index.js",
+    "dev": "nodemon app/index.js",
+    "test": "set NODE_ENV=test && jest"
+  },
+  "author": "Luis Millán",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "cloudinary": "^1.14.0",
+    "dotenv": "^8.0.0",
+    "graphql-import": "^0.7.1",
+    "graphql-yoga": "^1.18.0",
+    "jest": "^24.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
